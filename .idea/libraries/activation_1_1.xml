@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="activation-1.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Downloads/google-api-spelling-java-1.1-with-dependencies/dependencies/activation-1.1.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/google-api-spelling-java-1.1-with-dependencies/dependencies/jaxb-api-2.1.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/google-api-spelling-java-1.1-with-dependencies/dependencies/jaxb-impl-2.1.5.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/google-api-spelling-java-1.1-with-dependencies/dependencies/log4j-1.2.14.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/google-api-spelling-java-1.1-with-dependencies/dependencies/stax-api-1.0-2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

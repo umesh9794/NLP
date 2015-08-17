@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="joda-time">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Downloads/stanford-corenlp-full-2015-04-20/joda-time.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/stanford-corenlp-full-2015-04-20/javax.json.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/stanford-corenlp-full-2015-04-20/protobuf.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/stanford-corenlp-full-2015-04-20/jollyday.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/stanford-corenlp-full-2015-04-20/ejml-0.23.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/stanford-corenlp-full-2015-04-20/stanford-corenlp-3.5.2.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/stanford-corenlp-full-2015-04-20/xom.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
