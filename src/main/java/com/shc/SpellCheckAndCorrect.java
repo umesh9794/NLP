@@ -25,9 +25,10 @@ public class SpellCheckAndCorrect {
     public static List<String> suggestions=null;
 
     public static void getCorrection(String args) throws IOException{
-        hitMatch="";
-        suggestions= new ArrayList<String>();
+        hitMatch=new String();
+        suggestions= new ArrayList<>();
         JLanguageTool langTool = new JLanguageTool(new AmericanEnglish());
+
         for (Rule rule : langTool.getAllRules()) {
             if (!rule.isDictionaryBasedSpellingRule()) {
                 langTool.disableRule(rule.getId());
@@ -41,10 +42,15 @@ public class SpellCheckAndCorrect {
 //            System.out.println("Potential error at line " +
 //                    match.getLine() + ", column " +
 //                    match.getColumn() + ": " + match.getMessage());
-            System.out.println(match.getMessage());
-            if(match.getSuggestedReplacements().size() !=0) {
-                hitMatch=match.getSuggestedReplacements().get(0);
-                suggestions.addAll(match.getSuggestedReplacements());
+//            System.out.println(match.getMessage());
+            List<String> suggestionList=match.getSuggestedReplacements();
+            if( suggestionList.size()!=0) {
+                hitMatch=suggestionList.get(0);
+                if(suggestionList.size()<5)
+                    suggestions.addAll(suggestionList);
+                else
+                    suggestions.addAll(suggestionList.subList(0,5));
+
                        }
             }
 

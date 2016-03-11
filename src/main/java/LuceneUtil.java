@@ -37,4 +37,28 @@ public class LuceneUtil {
         }
         return tokens;
     }
+
+
+    public  static List<String> tokenizeString(String textFile) throws IOException{
+
+        EnglishAnalyzer ena=new EnglishAnalyzer(Version.LUCENE_4_10_4);
+
+        TokenStream tokenStream=ena.tokenStream(textFile.trim(), new StringReader(textFile.trim()));
+
+
+//        StringBuilder sb = new StringBuilder();
+        OffsetAttribute offsetAttribute = tokenStream.addAttribute(OffsetAttribute.class);
+        CharTermAttribute charTermAttribute = tokenStream.addAttribute(CharTermAttribute.class);
+
+        tokenStream.reset();
+        while (tokenStream.incrementToken()) {
+            int startOffset = offsetAttribute.startOffset();
+            int endOffset = offsetAttribute.endOffset();
+            String term = charTermAttribute.toString();
+            tokens.add(term);
+//            sb.append(term + " ");
+        }
+        return tokens;
+    }
+
 }

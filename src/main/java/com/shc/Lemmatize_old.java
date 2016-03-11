@@ -14,10 +14,9 @@ import java.util.*;
 /**
  * Created by uchaudh on 8/2/2015.
  */
-public class Lemmatize {
+public class Lemmatize_old {
 
     protected StanfordCoreNLP pipeline;
-
     public  List<String> suggestion=null;
     public  List<String> synonymList=null;
 
@@ -25,13 +24,7 @@ public class Lemmatize {
     /**
      * public constructor to initialize Properties
      */
-    public Lemmatize() {
-
-        PrintStream err = System.err;
-        System.setErr(new PrintStream(new OutputStream() {
-            public void write(int b) {
-            }
-        }));
+    public Lemmatize_old() {
 
         suggestion=new ArrayList<String>();
         synonymList=new ArrayList<String>();
@@ -39,7 +32,7 @@ public class Lemmatize {
         Properties props;
         props = new Properties();
 //        props.put("annotators", "tokenize, ssplit, pos, lemma,ner, parse");
-        props.put("annotators", "tokenize, ssplit, pos,lemma");
+        props.put("annotators", "tokenize, ssplit, pos, lemma");
 
         /*
          * This is a pipeline that takes in a string and returns various analyzed linguistic forms.
@@ -90,20 +83,15 @@ public class Lemmatize {
      */
     public static void main(String[] args) {
 
-
+//        PrintStream err = System.err;
+//        System.setErr(new PrintStream(new OutputStream() {
+//            public void write(int b) {
+//            }
+//        }));
     }
-
-
-  public void applyNLP(String[] args)
-  {
+    public void applyNLP(String[] args)
+    {
         try {
-            PrintStream err = System.err;
-            System.setErr(new PrintStream(new OutputStream() {
-                public void write(int b) {
-                }
-            }));
-
-            System.out.println("Input : "+ args[1]);
             //Stop words to be removed from generated tokens
             String[] synonyms=new String[5];
             Set<String> stopWords = new HashSet<String>();
@@ -120,52 +108,40 @@ public class Lemmatize {
             String text = args[1];
             Lemmatize slem = new Lemmatize();
 
+//            CharArraySet set = new CharArraySet(5,true);
+//            set.addAll(stopWords);
+//            List<String> tok=  LuceneUtil.removeStopWords(text, set);
+
             RiWordNet wordnet = new RiWordNet(args[0]);
-
             List<String>  lemmatizedOut=slem.lemmatize(text, stopWords);
+            List<String> outputList= new ArrayList<>();
 
-                for (String word : lemmatizedOut) {
-                    synonyms=new String[3];
-                    SpellCheckAndCorrect.getCorrection(word);
-                    if(!SpellCheckAndCorrect.hitMatch.equals("")) {
+            for (String word : lemmatizedOut) {
+                synonyms=new String[5];
+                SpellCheckAndCorrect.getCorrection(word);
+                if(!SpellCheckAndCorrect.hitMatch.equals("")) {
 //                    System.out.println("Suggested correction: "+"\n");
-                        suggestion.addAll(SpellCheckAndCorrect.suggestions);
-//                        suggestion.add(SpellCheckAndCorrect.hitMatch);
+//                        suggestion.addAll(SpellCheckAndCorrect.suggestions);
+                    suggestion.add(SpellCheckAndCorrect.hitMatch);
 //                    for(String s:SpellCheckAndCorrect.suggestions)
 //                        System.out.println(s+"\n");
 //                        synonyms = wordnet.getAllSynonyms(SpellCheckAndCorrect.hitMatch, RiWordNet.NOUN ,5);
-                    }
-                    else {
-                        if(suggestion.size()>0)
-                            appendWordToExistingSuggestions(word);
-                        else
-                        suggestion.add(word);
-                        synonyms = wordnet.getAllSynonyms(word, RiWordNet.NOUN, 5);
-                        synonymList.addAll(Arrays.asList(synonyms));
-                    }
+                }
+                else {
+                    suggestion.add(word);
+                    synonyms = wordnet.getAllSynonyms(word, RiWordNet.NOUN, 5);
+                }
 
 //                for(int ct=0;ct<synonyms.length;ct++)
 //                    System.out.println("Synonyms Found "+ (ct+1) +" : " +  synonyms[ct] +"\n");
-
-                }
-            System.setErr(err);
-
-//            System.out.println("Output : " + String.join(",",suggestion));
+            }
+            synonymList.addAll(Arrays.asList(synonyms));
+//            System.setErr(err);
         }
         catch (Exception ex)
         {
             ex.printStackTrace();
         }
-    }
-
-    public void appendWordToExistingSuggestions (String newWord )
-    {
-        for(int count=0; count<suggestion.size();count++)
-        {
-            String appended=suggestion.get(count)+"+"+newWord;
-            suggestion.set(count,appended);
-        }
-
     }
 
 }
