@@ -39,10 +39,6 @@ public class SpellCheckAndCorrect {
         List<RuleMatch> matches = langTool.check(args);
 
         for (RuleMatch match : matches) {
-//            System.out.println("Potential error at line " +
-//                    match.getLine() + ", column " +
-//                    match.getColumn() + ": " + match.getMessage());
-//            System.out.println(match.getMessage());
             List<String> suggestionList=match.getSuggestedReplacements();
             if( suggestionList.size()!=0) {
                 hitMatch=suggestionList.get(0);

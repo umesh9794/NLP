@@ -14,7 +14,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
-import org.json.JSONArray;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.*;
@@ -27,14 +26,6 @@ import java.util.concurrent.CopyOnWriteArraySet;
 public class Stemmer {
 
     public static void main(String[] args) throws IOException, net.didion.jwnl.JWNLException {
-
-//        RiWordNet wordnet = new RiWordNet("C:\\Users\\uchaudh\\Downloads\\WordNet-3.0");
-//        String word = "leatherjacket";
-//        String[] pos = wordnet.getAllDerivedTerms(word, wordnet.getPosStr(word));
-
-//       callGoogleService();
-
-//       LuceneUtil.tokenizeString("leatherjacket");
 
         String input="sheo";
         Lemmatize lt=new Lemmatize();

@@ -128,12 +128,7 @@ public class Lemmatize {
                     synonyms=new String[3];
                     SpellCheckAndCorrect.getCorrection(word);
                     if(!SpellCheckAndCorrect.hitMatch.equals("")) {
-//                    System.out.println("Suggested correction: "+"\n");
                         suggestion.addAll(SpellCheckAndCorrect.suggestions);
-//                        suggestion.add(SpellCheckAndCorrect.hitMatch);
-//                    for(String s:SpellCheckAndCorrect.suggestions)
-//                        System.out.println(s+"\n");
-//                        synonyms = wordnet.getAllSynonyms(SpellCheckAndCorrect.hitMatch, RiWordNet.NOUN ,5);
                     }
                     else {
                         if(suggestion.size()>0)
@@ -144,13 +139,9 @@ public class Lemmatize {
                         synonymList.addAll(Arrays.asList(synonyms));
                     }
 
-//                for(int ct=0;ct<synonyms.length;ct++)
-//                    System.out.println("Synonyms Found "+ (ct+1) +" : " +  synonyms[ct] +"\n");
-
                 }
             System.setErr(err);
 
-//            System.out.println("Output : " + String.join(",",suggestion));
         }
         catch (Exception ex)
         {
