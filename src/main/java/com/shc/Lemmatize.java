@@ -84,16 +84,6 @@ public class Lemmatize {
         return lemmas;
     }
 
-    /**
-     * Entry Point for Stemming and Lemmatizing Program, accepts input from command line argument
-     * @param args
-     */
-    public static void main(String[] args) {
-
-
-    }
-
-
   public void applyNLP(String[] args)
   {
         try {
